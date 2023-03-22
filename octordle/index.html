@@ -1,0 +1,442 @@
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<title>Octordle</title>
+<meta name="description" content="Put your skills to the test and solve eight Wordles at once! You have 13 guesses to solve all eight words. A new Octordle available each day to solve.">
+<meta name="keywords" content="Octordle, Quordle, Dordle, Wordle, word game, puzzle, brain teaser">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#181a1b" />
+<meta name=color-scheme content="dark">
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500&display=swap" rel="stylesheet">
+<link href="rs/css/all.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="body" style="max-width:550px;margin:auto;height:100%;display:flex">
+<div id="title" width="100%" style="margin:auto;flex:1;">
+<center>
+<div style="width: 67%;">
+<table style="width:100%;">
+<tr>
+<td style="text-align: center;"><img src="rs/imgs/octordle_dark.svg" alt="octordle" height="70" />
+</td>
+</tr>
+</table>
+</div>
+<div id="tutorial1" style="padding:12px;cursor:pointer;">
+<img src="rs/imgs/help_outline.svg" width="32" height="32">
+</div>
+<div id="giveordle" style="padding:12px;cursor:pointer;font-size: .75rem;color:white;">
+#giveordle - <span id="giveordle-text"></span>
+</div>
+<div class="box bg1" style="width: 60%; border:double;cursor:pointer;" id="daily">
+<table style="width:100%;">
+<tr>
+<td style="width:50%; text-align:right;">daily</td>
+<td style="width:50%; color:black;">octordle</td>
+</tr>
+</table>
+</div>
+<div style="height:8px;">&nbsp;</div>
+<div class="bg3" style="font-size:80%;">
+<table style="width:100%; color:black;">
+<tr>
+<td style="width:50%; text-align:right;">a new Octordle</td>
+<td style="width:50%;">each day</td>
+</tr>
+<tr>
+<td></td>
+<td id="next_daily">every day</td>
+</tr>
+</table>
+</div>
+<div class="button">&nbsp;</div>
+<div class="box bg5" style="width: 60%; border:double;cursor:pointer;" id="free">
+<table style="width:100%;">
+<tr>
+<td style="width:50%; text-align:right; color:black;">free</td>
+<td style="width:50%;">Octordle</td>
+</tr>
+</table>
+</div>
+<div style="height:8px;">&nbsp;</div>
+<div class="bg4" style="font-size:80%;">
+<table style="width:100%; color:black;">
+<tr>
+<td style="width:50%; text-align:right;">play as much</td>
+<td style="width:50%;">as you want</td>
+</tr>
+<tr>
+<td style="text-align:right;">every octordle</td>
+<td>is a surprise</td>
+</tr>
+</table>
+</div>
+<div style="height:32px;">&nbsp;</div>
+<div class="box" style="width: 60%; border:double;cursor:pointer;" id="widescreen-reset">
+Reset Widescreen Mode
+</div>
+</center>
+</div>
+<div id="tutorial" style="width:100%;height:100%;overflow:auto;padding-left:8px;padding-right:8px;font-size:50%;display:none;color:white;background-color:rgb(24, 26, 27);">
+<table style="width: 100%;font-size:200%;">
+<tr>
+<td class="box" style="border: none; border-style: double; width:35%;cursor:pointer;" id="leave_tutorial">back</td>
+</tr>
+</table>
+<h3>#giveordle</h3>
+<p>Recently Wordle exploded and brought joy to millions of people. It has inspired countless clones
+including Octordle that owe their success solely to Wordle. Through Octordle, I ask that you add
+brightness to the world through doing good. Perhaps
+#giveordle will take off like Wordle did.</p>
+<h3>Guess all eight OCTORDLE words in 13 tries.</h3>
+<p>Each guess must be a valid 5 letter word. Hit the enter button to submit.<br><br>After each guess, the
+color of the tiles will change to show how close your guess was to the word.</p>
+<h2>Examples</h2>
+<table style="width: 50%; border-spacing:0px;font-size:200%;">
+<tr>
+<td style="width: 50%; padding:0px;">
+<table style="width: 100%;" class="table_guesses">
+<tr>
+<td class="box button" width="20%" style="background-color:#00cc88;color:black;">C</td>
+<td class="box button" width="20%">R</td>
+<td class="box button" width="20%">O</td>
+<td class="box button" width="20%">W</td>
+<td class="box button" width="20%">N</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>The letter C is in the word and in the correct spot.<br><br></p>
+<table style="width: 50%; border-spacing:0px;font-size:200%;">
+<tr>
+<td style="width: 50%; padding:0px;">
+<table style="width: 100%;" class="table_guesses">
+<tr>
+<td class="box button" width="20%">B</td>
+<td class="box button" width="20%" style="background-color:#ffcc00;color:black;">A</td>
+<td class="box button" width="20%">D</td>
+<td class="box button" width="20%">G</td>
+<td class="box button" width="20%">E</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>The letter A is in the word but in the wrong spot.<br><br></p>
+<table style="width: 50%; border-spacing:0px;font-size:200%;">
+<tr>
+<td style="width: 50%; padding:0px;">
+<table style="width: 100%;" class="table_guesses">
+<tr>
+<td class="box button" width="20%">C</td>
+<td class="box button" width="20%">O</td>
+<td class="box button" width="20%">M</td>
+<td class="box button" width="20%">F</td>
+<td class="box button" width="20%">Y</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>The letters C, O, M, F, Y are not in the word in any spot.<br><br>When you type a guess in OCTORDLE, you
+will guess that word for all eight words that you are solving. All eight words you are solving will be
+different.<br></p>
+<table style="width: 100%; border-spacing:0px;font-size:200%;">
+<tr>
+<td style="width: 50%; padding:0px;">
+<table style="width: 100%;" class="table_guesses">
+<tr>
+<td class="box button" width="20%">W</td>
+<td class="box button" width="20%">O</td>
+<td class="box button" width="20%">R</td>
+<td class="box button" width="20%">L</td>
+<td class="box button" width="20%">D</td>
+</tr>
+</table>
+<table style="width: 100%;" class="table_guesses">
+<tr>
+<td class="box button" width="20%"></td>
+<td class="box button" width="20%"></td>
+<td class="box button" width="20%"></td>
+<td class="box button" width="20%"></td>
+<td class="box button" width="20%"></td>
+</tr>
+</table>
+<table style="width: 100%;" class="table_guesses">
+<tr>
+<td class="box button" width="20%"></td>
+<td class="box button" width="20%"></td>
+<td class="box button" width="20%"></td>
+<td class="box button" width="20%"></td>
+<td class="box button" width="20%"></td>
+</tr>
+</table>
+</td>
+<td style="width: 50%; padding:0px;">
+<table style="width: 100%;" class="table_guesses">
+<tr>
+<td class="box button" width="20%">W</td>
+<td class="box button" width="20%">O</td>
+<td class="box button" width="20%" style="background-color:#ffcc00;color:black;">R</td>
+<td class="box button" width="20%">L</td>
+<td class="box button" width="20%" style="background-color:#00cc88;color:black;">D</td>
+</tr>
+</table>
+<table style="width: 100%;" class="table_guesses">
+<tr>
+<td class="box button" width="20%"></td>
+<td class="box button" width="20%"></td>
+<td class="box button" width="20%"></td>
+<td class="box button" width="20%"></td>
+<td class="box button" width="20%"></td>
+</tr>
+</table>
+<table style="width: 100%;" class="table_guesses">
+<tr>
+<td class="box button" width="20%"></td>
+<td class="box button" width="20%"></td>
+<td class="box button" width="20%"></td>
+<td class="box button" width="20%"></td>
+<td class="box button" width="20%"></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td style="width: 50%; padding:0px;">
+<table style="width: 100%;" class="table_guesses">
+<tr>
+<td class="box button" width="20%">W</td>
+ <td class="box button" width="20%">O</td>
+<td class="box button" width="20%">R</td>
+<td class="box button" width="20%" style="background-color:#ffcc00;color:black;">L</td>
+<td class="box button" width="20%">D</td>
+</tr>
+</table>
+<table style="width: 100%;" class="table_guesses">
+<tr>
+<td class="box button" width="20%"></td>
+<td class="box button" width="20%"></td>
+<td class="box button" width="20%"></td>
+<td class="box button" width="20%"></td>
+<td class="box button" width="20%"></td>
+</tr>
+</table>
+<table style="width: 100%;" class="table_guesses">
+<tr>
+<td class="box button" width="20%"></td>
+<td class="box button" width="20%"></td>
+<td class="box button" width="20%"></td>
+<td class="box button" width="20%"></td>
+<td class="box button" width="20%"></td>
+</tr>
+</table>
+</td>
+<td style="width: 50%; padding:0px;">
+<table style="width: 100%;" class="table_guesses">
+<tr>
+<td class="box button" width="20%">W</td>
+<td class="box button" width="20%" style="background-color:#00cc88;color:black;">O</td>
+<td class="box button" width="20%">R</td>
+<td class="box button" width="20%">L</td>
+<td class="box button" width="20%" style="background-color:#ffcc00;color:black;">D</td>
+</tr>
+</table>
+<table style="width: 100%;" class="table_guesses">
+<tr>
+<td class="box button" width="20%"></td>
+<td class="box button" width="20%"></td>
+<td class="box button" width="20%"></td>
+<td class="box button" width="20%"></td>
+<td class="box button" width="20%"></td>
+</tr>
+</table>
+<table style="width: 100%;" class="table_guesses">
+<tr>
+<td class="box button" width="20%"></td>
+<td class="box button" width="20%"></td>
+<td class="box button" width="20%"></td>
+<td class="box button" width="20%"></td>
+<td class="box button" width="20%"></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>For the guess WORLD:
+<ol>
+<li>The top left word has none of the letters.</li>
+<li>The top right word has the R in the wrong spot and the D in the correct spot.</li>
+<li>The bottom left word has the L in the wrong spot.</li>
+<li>The bottom right word has the O in the right spot and the D in the wrong spot.</li>
+</ol>
+</p>
+<p>You have 13 guesses to get all 8 words correct. Good luck!</p>
+<p>A new Octordle will be available each day!<br><br></p>
+</div>
+<div id="game" style="display: none;flex-direction: column;" width="100%">
+<table style="width: 100%;">
+<tr>
+<td class="box" style="border: none; border-style: double; width:25%;cursor:pointer;" id="restart">
+back</td>
+<td class="box" style="border: none; border-style: double; width:20%;cursor:pointer;display:none;" id="reset_free">new</td>
+<td style="width:*; text-align:center;font-size:75%;" id="game_title"></td>
+<td id="tutorial2" style="padding:6px;cursor:pointer;width:32px;">
+<img src="rs/imgs/help_outline.svg" width="32" height="32">
+</td>
+<td id="fullscreen" style="padding:6px;cursor:pointer;width:32px;display:none;">
+<img src="rs/imgs/fullscreen.svg" width="32" height="32">
+</td>
+<td id="exit_fullscreen" style="padding:6px;cursor:pointer;width:32px;display:none;">
+<img src="rs/imgs/fullscreen_exit.svg" width="32" height="32">
+</td>
+</tr>
+</table>
+<table id="widescreen-question" style="width: 100%; font-size: 75%">
+<td style="width:*">
+Want to try widescreen mode?
+</td>
+<td class="box" id="widescreen-yes">
+Yes
+</td>
+<td class="box" id="widescreen-no">
+No
+</td>
+</table>
+<div id="normal-container" style="width: 100%;flex: 1;overflow: auto;">
+<table style="width: 100%; border-spacing:0px;">
+<tr>
+<td style="width: 50%; padding:0px;" id="box-holder-1">
+</td>
+<td style="width: 50%; padding:0px;" id="box-holder-2">
+</td>
+ </tr>
+<tr>
+<td>&nbsp;</td>
+<td></td>
+</tr>
+<tr>
+<td style="width: 50%; padding:0px;" id="box-holder-3">
+</td>
+<td style="width: 50%; padding:0px;" id="box-holder-4">
+</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td></td>
+</tr>
+<tr>
+<td style="width: 50%; padding:0px;" id="box-holder-5">
+</td>
+<td style="width: 50%; padding:0px;" id="box-holder-6">
+</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td></td>
+</tr>
+<tr>
+<td style="width: 50%; padding:0px;" id="box-holder-7">
+</td>
+<td style="width: 50%; padding:0px;" id="box-holder-8">
+</td>
+</tr>
+</table>
+</div>
+<div id="widescreen-container" style="width:100%; flex: 1; overflow: auto; display:none; min-height: 650px;">
+<div style="display: flex; justify-content: space-between; gap: 15px; min-height: 550px">
+<div id="box-holder-1-widescreen"></div>
+<div id="box-holder-2-widescreen"></div>
+<div id="box-holder-3-widescreen"></div>
+<div id="box-holder-4-widescreen"></div>
+<div id="box-holder-5-widescreen"></div>
+<div id="box-holder-6-widescreen"></div>
+<div id="box-holder-7-widescreen"></div>
+<div id="box-holder-8-widescreen"></div>
+</div>
+</div>
+<div id="post_game">
+<table width="100%">
+<tr height="14.2%">
+<td rowspan=5 style="width:50%;">
+<textarea class="box" style="width:100%; border: 1px solid;overflow:auto;resize:none;" rows="7" id="share_content">test</textarea>
+</td>
+<td style="font-size:75%; width:50%; text-align:center; vertical-align: top; padding-top: 15px;">
+<div style="font-size:75%; width:50%; text-align:center; white-space: pre;" id="answer12">
+&nbsp;</div>
+<div style="font-size:75%; width:50%; text-align:center; white-space: pre;" id="answer34">
+&nbsp;</div>
+<div style="font-size:75%; width:50%; text-align:center; white-space: pre;" id="answer56">
+&nbsp;</div>
+<div style="font-size:75%; width:50%; text-align:center; white-space: pre;" id="answer78">
+&nbsp;</div>
+</td>
+</tr>
+<tr height="14.2%">
+</tr>
+<tr height="14.2%">
+</tr>
+<tr height="14.2%">
+</tr>
+<tr height="14.2%">
+<td class="box" style="border: none; border-style: double;font-size:50%;width:50%;cursor:pointer;visibility:hidden;padding:8px;" id="share">
+share
+</td>
+</tr>
+<tr height="14.2%">
+<td class="box" style="border: none; border-style: double;font-size:50%;width:50%;cursor:pointer;padding:8px;" id="share_clipboard">
+copy to clipboard
+</td>
+</tr>
+ </table>
+</div>
+<table id="keyboard" style="width: 100%; max-width: 550px; margin: auto" class="table_guesses">
+<tr>
+<td class="box button key" width="10%" id="q">Q</td>
+<td class="box button key" width="10%" id="w">W</td>
+<td class="box button key" width="10%" id="e">E</td>
+<td class="box button key" width="10%" id="r">R</td>
+<td class="box button key" width="10%" id="t">T</td>
+<td class="box button key" width="10%" id="y">Y</td>
+<td class="box button key" width="10%" id="u">U</td>
+<td class="box button key" width="10%" id="i">I</td>
+<td class="box button key" width="10%" id="o">O</td>
+<td class="box button key" width="10%" id="p">P</td>
+</tr>
+<tr>
+<td class="box button key" width="10%" id="a">A</td>
+<td class="box button key" width="10%" id="s">S</td>
+<td class="box button key" width="10%" id="d">D</td>
+<td class="box button key" width="10%" id="f">F</td>
+<td class="box button key" width="10%" id="g">G</td>
+<td class="box button key" width="10%" id="h">H</td>
+<td class="box button key" width="10%" id="j">J</td>
+<td class="box button key" width="10%" id="k">K</td>
+<td class="box button key" width="10%" id="l">L</td>
+<td class="box button key" style="border-bottom:none;" width="10%" id="enter3"></td>
+</tr>
+<tr>
+<td class="box button key" width="10%" id="bs">&#x232B;</td>
+<td class="box button key" width="10%" id="z">Z</td>
+<td class="box button key" width="10%" id="x">X</td>
+<td class="box button key" width="10%" id="c">C</td>
+<td class="box button key" width="10%" id="v">V</td>
+<td class="box button key" width="10%" id="b">B</td>
+<td class="box button key" width="10%" id="n">N</td>
+<td class="box button key" width="10%" id="m">M</td>
+<td class="box button key" style="border-right: none;" width="10%" id="enter1"></td>
+<td class="box button key" style="border-left: none; border-top:none;" width="10%" id="enter2">
+&#x23CE;</td>
+</tr>
+</table>
+</div>
+</div>
+<canvas id="canvas" width="176" height="352" style="position:absolute;left:0;top:0;display:none;"></canvas>
+<script src="rs/js/ob_mersenne.js"></script>
+<script src="rs/js/ob_game.js"></script>
+</body>
+</html>
